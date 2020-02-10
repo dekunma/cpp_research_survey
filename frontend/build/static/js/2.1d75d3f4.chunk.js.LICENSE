@@ -1,0 +1,289 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/** @license React v16.12.0
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.12.0
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v0.18.0
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/*!**************************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/debug/src/browser.js ***!
+        \**************************************************************************************/
+
+/*! no static exports found */
+
+/*! ./common */
+
+/*! ./../../process/browser.js */
+
+/*!*************************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/debug/src/common.js ***!
+        \*************************************************************************************/
+
+/*! ms */
+
+/*!**********************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/events/events.js ***!
+        \**********************************************************************************/
+
+/*!*****************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/ms/index.js ***!
+        \*****************************************************************************/
+
+/*!************************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/process/browser.js ***!
+        \************************************************************************************/
+
+/*!***********************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/qs/lib/formats.js ***!
+        \***********************************************************************************/
+
+/*! ./utils */
+
+/*!*********************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/qs/lib/index.js ***!
+        \*********************************************************************************/
+
+/*! ./stringify */
+
+/*! ./parse */
+
+/*! ./formats */
+
+/*!*********************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/qs/lib/parse.js ***!
+        \*********************************************************************************/
+
+/*!*************************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/qs/lib/stringify.js ***!
+        \*************************************************************************************/
+
+/*!*********************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/qs/lib/utils.js ***!
+        \*********************************************************************************/
+
+/*!****************************************************************************************!*\
+        !*** /Users/daffl/Development/feathersjs/feathers/node_modules/uberproto/lib/proto.js ***!
+        \****************************************************************************************/
+
+/*!********************************************!*\
+        !*** ../authentication-client/lib/core.js ***!
+        \********************************************/
+
+/*! @feathersjs/errors */
+
+/*! ./storage */
+
+/*!************************************************************!*\
+        !*** ../authentication-client/lib/hooks/authentication.js ***!
+        \************************************************************/
+
+/*! @feathersjs/commons */
+
+/*!***************************************************!*\
+        !*** ../authentication-client/lib/hooks/index.js ***!
+        \***************************************************/
+
+/*! ./authentication */
+
+/*! ./populate-header */
+
+/*!*************************************************************!*\
+        !*** ../authentication-client/lib/hooks/populate-header.js ***!
+        \*************************************************************/
+
+/*!*********************************************!*\
+        !*** ../authentication-client/lib/index.js ***!
+        \*********************************************/
+
+/*! ./core */
+
+/*! ./hooks */
+
+/*!***********************************************!*\
+        !*** ../authentication-client/lib/storage.js ***!
+        \***********************************************/
+
+/*!*******************************!*\
+        !*** ../commons/lib/hooks.js ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ../commons/lib/index.js ***!
+        \*******************************/
+
+/*!*******************************!*\
+        !*** ../commons/lib/utils.js ***!
+        \*******************************/
+
+/*! ./../../../node_modules/process/browser.js */
+
+/*!******************************!*\
+        !*** ../errors/lib/index.js ***!
+        \******************************/
+
+/*! debug */
+
+/*!**************************************!*\
+        !*** ../feathers/lib/application.js ***!
+        \**************************************/
+
+/*! uberproto */
+
+/*! ./events */
+
+/*! ./version */
+
+/*!*********************************!*\
+        !*** ../feathers/lib/events.js ***!
+        \*********************************/
+
+/*! events */
+
+/*!*************************************!*\
+        !*** ../feathers/lib/hooks/base.js ***!
+        \*************************************/
+
+/*!**************************************!*\
+        !*** ../feathers/lib/hooks/index.js ***!
+        \**************************************/
+
+/*! ./base */
+
+/*!********************************!*\
+        !*** ../feathers/lib/index.js ***!
+        \********************************/
+
+/*! ./application */
+
+/*!**********************************!*\
+        !*** ../feathers/lib/version.js ***!
+        \**********************************/
+
+/*!*************************************!*\
+        !*** ../primus-client/lib/index.js ***!
+        \*************************************/
+
+/*! @feathersjs/transport-commons/client */
+
+/*!*************************************************!*\
+        !*** ../rest-client/lib/angular-http-client.js ***!
+        \*************************************************/
+
+/*!*************************************!*\
+        !*** ../rest-client/lib/angular.js ***!
+        \*************************************/
+
+/*!***********************************!*\
+        !*** ../rest-client/lib/axios.js ***!
+        \***********************************/
+
+/*!**********************************!*\
+        !*** ../rest-client/lib/base.js ***!
+        \**********************************/
+
+/*! qs */
+
+/*!***********************************!*\
+        !*** ../rest-client/lib/fetch.js ***!
+        \***********************************/
+
+/*!***********************************!*\
+        !*** ../rest-client/lib/index.js ***!
+        \***********************************/
+
+/*! ./jquery */
+
+/*! ./superagent */
+
+/*! ./request */
+
+/*! ./fetch */
+
+/*! ./axios */
+
+/*! ./angular */
+
+/*! ./angular-http-client */
+
+/*!************************************!*\
+        !*** ../rest-client/lib/jquery.js ***!
+        \************************************/
+
+/*!*************************************!*\
+        !*** ../rest-client/lib/request.js ***!
+        \*************************************/
+
+/*!****************************************!*\
+        !*** ../rest-client/lib/superagent.js ***!
+        \****************************************/
+
+/*!***************************************!*\
+        !*** ../socketio-client/lib/index.js ***!
+        \***************************************/
+
+/*!**************************************!*\
+        !*** ../transport-commons/client.js ***!
+        \**************************************/
+
+/*! ./lib/client */
+
+/*!******************************************!*\
+        !*** ../transport-commons/lib/client.js ***!
+        \******************************************/
+
+/*!**********************!*\
+        !*** ./src/index.js ***!
+        \**********************/
+
+/*! @feathersjs/feathers */
+
+/*! @feathersjs/authentication-client */
+
+/*! @feathersjs/rest-client */
+
+/*! @feathersjs/socketio-client */
+
+/*! @feathersjs/primus-client */
+
+/** @license React v16.12.0
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * A better abstraction over CSS.
+ *
+ * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
+ * @website https://github.com/cssinjs/jss
+ * @license MIT
+ */
