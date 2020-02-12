@@ -3,7 +3,7 @@ import feathers from '@feathersjs/client';
 import axios from 'axios'
 
 const rest = feathers.rest;
-const host = "http://localhost:3030"
+const host = "http://45.63.123.96:3030"
 
 const client = feathers();
 

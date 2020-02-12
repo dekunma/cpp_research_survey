@@ -1,23 +1,9 @@
 import React from 'react';
-//import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-//import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Container from '@material-ui/core/Container';
-import Slide from '@material-ui/core/Slide';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
-import Divider from '@material-ui/core/Divider'
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select'
-import FormControl from '@material-ui/core/FormControl';
-import Chip from '@material-ui/core/Chip';
-import Paper from '@material-ui/core/Paper'
 import Rating from '@material-ui/lab/Rating';
-import Button from '@material-ui/core/Button'
-import {AppBar, Typography} from '@material-ui/core'
+import {AppBar, Typography, Toolbar, CssBaseline,
+    useScrollTrigger, Container, Slide, withStyles,
+    Grid, TextField, Divider, InputLabel, Select, 
+    FormControl, Paper, Button} from '@material-ui/core'
 import client from './feathers'
 import LongQuestion from './Components/longQuestion'
 import StarQuestion from './Components/StarQuestion'
@@ -104,30 +90,45 @@ class App extends React.Component {
   }
   
   handleContinue = () => {
-    this.filterStar(5, 'important')
+    this.filterStar(5, 'star5')
     this.filterStar(4,'star4')
     this.filterStar(3,'star3')
     this.filterStar(2,'star2')
-    this.filterStar(1, 'unimportant')
+    this.filterStar(1, 'star1')
     this.setState({continue:true})
   }
 
   handleSubmit = () => {
     client.service('feedback')
     .create({
-      important   : this.state.important,
+      name        : this.state.name,
+      company     : this.state.company,
+      time        : this.state.time,
+      postion     : this.state.position,
+      altPosition : this.state.altPosition,
+      Q1          : this.state.Q1,
+      Q2          : this.state.Q2,
+      Q3          : this.state.Q3,
+      Q4          : this.state.Q4,
+      Q5          : this.state.Q5,
+      Q6          : this.state.Q6,
+      Q7          : this.state.Q7,
+      Q8          : this.state.Q8,
+      star5       : this.state.star5,
       star4       : this.state.star4,
-      unimportant : this.state.unimportant,
+      star3       : this.state.star3,
+      star2       : this.state.star2,
+      star1       : this.state.star1
 
     })
     .then(r => {
       console.log(r)
-      alert('Your Response Has Been Recorded')
+      alert('Thank You! Your Response Has Been Recorded')
       console.log('state: ',this.state)
     })
     .catch(e => {
       console.log(e)
-      alert('Error Occured')
+      alert('Submission Failed. Please Try Again.')
     })
   }
 
@@ -143,7 +144,7 @@ class App extends React.Component {
         <HideOnScroll >
           <AppBar>
             <Toolbar>
-              <Typography variant="h6">C++ Survey</Typography>
+              <Typography variant="h6">UCSD C++ Survey</Typography>
             </Toolbar>
           </AppBar>
         </HideOnScroll>
@@ -158,19 +159,19 @@ class App extends React.Component {
                 <TextField 
                   className={classes.TextField} 
                   label="Your Name"
-                  onChange={ev => this.handleChangeValue(ev, 'name')}
+                  onChange={ev => this.handleChange(ev, 'name')}
                 />
                 <div/>
                 <TextField 
                   className={classes.TextField} 
                   label="Organization/Company"
-                  onChange={ev => this.handleChangeValue(ev, 'company')}
+                  onChange={ev => this.handleChange(ev, 'company')}
                 />
                 <div/>
                 <TextField
                   className={classes.TextField}
                   label='Time of being a Developer'
-                  onChange={ev => this.handleChangeValue(ev, 'time-being-developer')}
+                  onChange={ev => this.handleChange(ev, 'time')}
                   placeholder='How many years'
                 />
                 <div/>
@@ -197,7 +198,7 @@ class App extends React.Component {
                     <TextField 
                       className={classes.TextField} 
                       label="Your Position"
-                      onChange={ev => this.handleChangeValue(ev, 'other-position')}
+                      onChange={ev => this.handleChange(ev, 'altPosition')}
                     />                 
                   </div>
                   :
@@ -231,7 +232,7 @@ class App extends React.Component {
                 <Grid item md={6} xs={10}>
                   <Paper className={classes.centerItem}>
                         {questions.map(q => (
-                          <div className={classes.centerItem}>
+                          <div key={q} className={classes.centerItem}>
                             <div className={classes.markDiv}>{q}</div>
                             <Rating
                               name={q}
@@ -255,23 +256,23 @@ class App extends React.Component {
             <Grid item md={6} xs={10}>
 
               <StarQuestion
-                topics={this.state.important}
+                topics={this.state.star5}
                 question='For the topics that you gave 5 stars, 
                 could you briefly explain the reason 
                 why you think they are so important?'
                 supplement='The topics you gave 5 stars are:'
-                onChange={ev => this.handleChange(ev, 'importantReason')}
+                onChange={ev => this.handleChange(ev, 'Q1')}
               />
 
               <div className={classes.topMarginSmall}/>
 
               <StarQuestion
-                topics={this.state.unimportant}
+                topics={this.state.star1}
                 question='For the topics that you gave 1 star, 
                 could you briefly explain the reason 
                 why you think they are not so important?'
                 supplement='The topics you gave 1 star are:'
-                onChange={ev => this.handleChange(ev, 'unimportantReason')}
+                onChange={ev => this.handleChange(ev, 'Q2')}
               />
 
               <div className={classes.topMarginSmall}/>
