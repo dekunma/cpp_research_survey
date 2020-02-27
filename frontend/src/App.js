@@ -2,8 +2,7 @@ import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import {AppBar, Typography, Toolbar, CssBaseline,
     useScrollTrigger, Container, Slide, withStyles,
-    Grid, TextField, Divider, InputLabel, Select, 
-    FormControl, Paper, Button} from '@material-ui/core'
+    Grid, TextField, Divider, Paper, Button} from '@material-ui/core'
 import client from './feathers'
 import LongQuestion from './Components/longQuestion'
 import StarQuestion from './Components/StarQuestion'
@@ -122,9 +121,8 @@ class App extends React.Component {
 
     })
     .then(r => {
-      console.log(r)
       alert('Thank You! Your Response Has Been Recorded')
-      console.log('state: ',this.state)
+      this.setState({submitted:true})
     })
     .catch(e => {
       console.log(e)
@@ -138,235 +136,208 @@ class App extends React.Component {
 
   render(){
     const { classes } = this.props;
-    return (
-      <React.Fragment>
-        <CssBaseline />
-        <HideOnScroll >
-          <AppBar>
-            <Toolbar>
-              <Typography variant="h6">UCSD C++ Survey</Typography>
-            </Toolbar>
-          </AppBar>
-        </HideOnScroll>
-        <Toolbar />
-        <Container>
-          <div className={classes.topMargin}/>
-
-          <Grid container className={classes.centerItem}>
-            <Grid item md={3} xs={1}/>
-            <Grid item md={6} xs={10} >
-              <Paper className={classes.padding}>
-                <TextField 
-                  className={classes.TextField} 
-                  label="Your Name"
-                  onChange={ev => this.handleChange(ev, 'name')}
-                />
-                <div/>
-                <TextField 
-                  className={classes.TextField} 
-                  label="Organization/Company"
-                  onChange={ev => this.handleChange(ev, 'company')}
-                />
-                <div/>
-                <TextField
-                  className={classes.TextField}
-                  label='Time of being a Developer'
-                  onChange={ev => this.handleChange(ev, 'time')}
-                  placeholder='How many years'
-                />
-                <div/>
-                  <FormControl className={classes.TextField}>
-                    <InputLabel htmlFor="position-selecter">Your Job Position</InputLabel>
-                    <Select
-                      native
-                      onChange={ev => this.handleChange(ev,'position')}
-                      inputProps={{
-                        name: 'position',
-                        id: 'position-selecter',
-                      }}
-                    > 
-                      <option value=''></option>
-                      {jobPositions.map(elem => (
-                        <option key={elem} value={elem}>{elem}</option>
-                      ))}
-                    </Select>
-                  </FormControl>
+    if(this.state.submitted){
+      return(<h2>Thank You!</h2>)
+    }
+    else{
+      return (
+        <React.Fragment>
+          <CssBaseline />
+          <HideOnScroll >
+            <AppBar>
+              <Toolbar>
+                <Typography variant="h6">UCSD C++ Survey</Typography>
+              </Toolbar>
+            </AppBar>
+          </HideOnScroll>
+          <Toolbar />
+          <Container>
+            <div className={classes.topMargin}/>
+  
+            <Grid container className={classes.centerItem}>
+              <Grid item md={3} xs={1}/>
+              <Grid item md={6} xs={10} >
+                <Paper className={classes.padding}>
+                  <TextField 
+                    className={classes.TextField} 
+                    label="Your Name"
+                    onChange={ev => this.handleChange(ev, 'name')}
+                  />
                   <div/>
-                  {this.state.position === 'Other'
-                  ?
-                  <div>
-                    <TextField 
-                      className={classes.TextField} 
-                      label="Your Position"
-                      onChange={ev => this.handleChange(ev, 'altPosition')}
-                    />                 
-                  </div>
-                  :
-                  <div/>}
-              </Paper>
-              
+                  <TextField 
+                    className={classes.TextField} 
+                    label="Organization/Company"
+                    onChange={ev => this.handleChange(ev, 'company')}
+                  />
+                  <div/>
+                  <TextField
+                    className={classes.TextField}
+                    label='Number of years you have worked as a developer'
+                    onChange={ev => this.handleChange(ev, 'time')}
+                    placeholder='How many years'
+                    multiline
+                    rows={2}
+                  />
+                  <div/>
+                  <TextField
+                    className={classes.TextField}
+                    label='Your Job Position'
+                    onChange={ev => this.handleChange(ev, 'position')}
+                  />
+                </Paper>
+                
+              </Grid>
+              <Grid item md={3} xs={1}/>
             </Grid>
-            <Grid item md={3} xs={1}/>
-          </Grid>
-
-          <Divider/>
-          
-          <Grid container className={classes.centerItem}>
+  
+            <Divider/>
+            
+            <Grid container className={classes.centerItem}>
+                  <Grid item md={3} xs={1}/>
+                  <Grid item md={6} xs={10} >
+                    <Paper className={classes.centerItem}>
+                          <div className={classes.padding }>
+                            <b>Based on your experience working with C++, 
+                              please mark the level of importance for the following topics.
+                              5 stars means the most important, 
+                              1 star means the least important. 
+                              You can skip topics if you don't know/not sure about the topics.
+                            </b>
+                          </div>
+                    </Paper>
+                    <Grid item md={3} xs={10}/>
+                  </Grid>
+              </Grid>
+             
+            <Grid container className={classes.centerItem}>
                 <Grid item md={3} xs={1}/>
-                <Grid item md={6} xs={10} >
-                  <Paper className={classes.centerItem}>
-                        <div className={classes.padding }>
-                          <b>Please mark the level of importance that you think for
-                            the following topics. 5 stars means the most important, 1 star
-                            means the least important. You can skip topics if you don't know/not 
-                            sure about the topics.
-                          </b>
-                        </div>
-                  </Paper>
+                  <Grid item md={6} xs={10}>
+                    <Paper className={classes.centerItem}>
+                          {questions.map(q => (
+                            <div key={q} className={classes.centerItem}>
+                              <div className={classes.markDiv}>{q}</div>
+                              <Rating
+                                name={q}
+                                onChange={(event, value) => this.handleChangeValue(event,value,q)}
+                                defaultValue={0}
+                              />
+                            </div>
+                          ))}
+                    </Paper>
                   <Grid item md={3} xs={10}/>
                 </Grid>
             </Grid>
-           
-          <Grid container className={classes.centerItem}>
-              <Grid item md={3} xs={1}/>
-                <Grid item md={6} xs={10}>
-                  <Paper className={classes.centerItem}>
-                        {questions.map(q => (
-                          <div key={q} className={classes.centerItem}>
-                            <div className={classes.markDiv}>{q}</div>
-                            <Rating
-                              name={q}
-                              onChange={(event, value) => this.handleChangeValue(event,value,q)}
-                              defaultValue={0}
-                            />
-                          </div>
-                        ))}
-                  </Paper>
-                <Grid item md={3} xs={10}/>
-              </Grid>
-          </Grid>
-        
-            {this.state.continue
-            ?
-            <div>
-              <Divider/>
           
-          <Grid container className={classes.centerItem}>
-            <Grid item md={3} xs={1}/>
-            <Grid item md={6} xs={10}>
-
-              <StarQuestion
-                topics={this.state.star5}
-                question='For the topics that you gave 5 stars, 
-                could you briefly explain the reason 
-                why you think they are so important?'
-                supplement='The topics you gave 5 stars are:'
-                onChange={ev => this.handleChange(ev, 'Q1')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <StarQuestion
-                topics={this.state.star1}
-                question='For the topics that you gave 1 star, 
-                could you briefly explain the reason 
-                why you think they are not so important?'
-                supplement='The topics you gave 1 star are:'
-                onChange={ev => this.handleChange(ev, 'Q2')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <LongQuestion
-                question='What are the features in C++ 
-                that you use the most often on the daily basis?'
-                onChange={ev => this.handleChange(ev, 'Q3')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-
-              <LongQuestion
-                question='Could you briefly explain 
-                why you use these features the most often?'
-                onChange={ev => this.handleChange(ev, 'Q4')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <LongQuestion
-                question='If you are invited to teach C++ at a university
-                , what topics/knowledges will you cover in class?'
-                onChange={ev => this.handleChange(ev ,'Q5')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <LongQuestion
-                question='If you have learnt C++ in college: 
-                did the knowledge of C++ you learnt 
-                helped you a lot in you job? Why or why not?'
-                onChange={ev => this.handleChange(ev, 'Q6')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <LongQuestion
-                question='Do you have any opinions 
-                about the current way of how 
-                universities are teaching C++?'
-                onChange={ev => this.handleChange(ev, 'Q7')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <LongQuestion
-                question='Is there any C++ topics that 
-                you find import to your job, but not listed above?'
-                onChange={ev => this.handleChange(ev, 'Q8')}
-              />
-
-              <div className={classes.topMarginSmall}/>
-
-              <Button 
-                className={classes.margin} 
+              {this.state.continue
+              ?
+              <div>
+                <Divider/>
+            
+            <Grid container className={classes.centerItem}>
+              <Grid item md={3} xs={1}/>
+              <Grid item md={6} xs={10}>
+  
+                <StarQuestion
+                  topics={this.state.star5}
+                  question='For the topics that you gave 5 stars, 
+                  could you briefly explain the reason 
+                  why you think they are so important?'
+                  supplement='The topics you gave 5 stars are:'
+                  onChange={ev => this.handleChange(ev, 'Q1')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <StarQuestion
+                  topics={this.state.star1}
+                  question='For the topics that you gave 1 star, 
+                  could you briefly explain the reason 
+                  why you think they are not so important?'
+                  supplement='The topics you gave 1 star are:'
+                  onChange={ev => this.handleChange(ev, 'Q2')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <LongQuestion
+                  question=' What are the features in C++ 
+                  that you use most often on a daily basis?'
+                  onChange={ev => this.handleChange(ev, 'Q3')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+  
+                <LongQuestion
+                  question='Could you briefly explain 
+                  why you use these features the most often?'
+                  onChange={ev => this.handleChange(ev, 'Q4')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <LongQuestion
+                  question='If you teach C++ at a university, 
+                  what topics will you cover in your C++ class?'
+                  onChange={ev => this.handleChange(ev ,'Q5')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <LongQuestion
+                  question='If you learnt C++ in college, 
+                  did the knowledge of C++ you learnt help you in your current job? Why or why not?'
+                  onChange={ev => this.handleChange(ev, 'Q6')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <LongQuestion
+                  question='Do you have any opinions about 
+                  how C++ is taught at colleges/universities currently?'
+                  onChange={ev => this.handleChange(ev, 'Q7')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <LongQuestion
+                  question='Are there any C++ topics 
+                  that you find important to your job, but are not listed above?'
+                  onChange={ev => this.handleChange(ev, 'Q8')}
+                />
+  
+                <div className={classes.topMarginSmall}/>
+  
+                <Button 
+                  className={classes.margin} 
+                  variant='contained' 
+                  color='primary' 
+                  onClick={ev => this.handleSubmit()}
+                >Submit</Button>
+  
+                  </Grid>
+                <Grid item md={6} xs={1}/>
+              <Grid item md={3} xs={1}/>
+            </Grid>
+              </div>
+              :
+              <div className={classes.centerItem}>
+               <Button 
+                onClick={ev => this.handleContinue()} 
                 variant='contained' 
-                color='primary' 
-                onClick={ev => this.handleSubmit()}
-              >Submit</Button>
-
-                </Grid>
-              <Grid item md={6} xs={1}/>
-            <Grid item md={3} xs={1}/>
-          </Grid>
-            </div>
-            :
-            <div className={classes.centerItem}>
-             <Button 
-              onClick={ev => this.handleContinue()} 
-              variant='contained' 
-              color='primary'>Continue</Button>
-            </div>
-            }
-
-        </Container>
-      </React.Fragment>
-    );
+                color='primary'>Continue</Button>
+              </div>
+              }
+  
+          </Container>
+        </React.Fragment>
+      );
+    }
   }
 
 }
 
 export default withStyles(styles)(App);
-
-const jobPositions = [
-  'Web Programmer',
-  'System Programmer',
-  'Game Programmer',
-  'Application Programmer',
-  'Artificial Intelligence Developer',
-  'Database Developer',
-  'Other'
-]
 
 const questions = [
   'Raw Pointers',
